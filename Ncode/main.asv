@@ -1,0 +1,33 @@
+clc;
+clear all;
+global or oc;
+
+ip = 'E:\Study\sem3\Data mining\Data\Incom\CNP\';
+orig= 'E:\Study\sem3\Data mining\Data\original\CNP.xlsx';
+out = 'E:\Study\sem3\Data mining\Data\out\check\';
+
+incomfname = input('Enter incomplete file:', 's');
+incomf = xlsread(strcat(ip,incomfname,'.xlsx'));
+origm = xlsread(orig);
+temp = incomf;
+
+[or oc] = find_missing(temp);
+
+uoc = unique(oc); % unique missing columns
+[ur uc]=size(uoc);
+    for i=1:ur
+            targetc = uoc(i);
+            [impute] = SVR(temp,targetc);
+            temp = impute;
+             
+    end
+    
+    output = impute;
+    xlswrite(strcat(out,incomfname,'.xlsx'),output);
+    [nrms] = nrms(output,origm);
+      disp(nrms);
+    
+    
+    
+    
+

@@ -55,6 +55,8 @@ dimputed values are
 
     0.0067
 Note – Last value displayed is NRMS Error
+
+
 Categorical data:
 In order to execute categorical data we need to just run the file “mainc.m” file. When you execute this file it will ask to enter incomplete file name where we need to mention complete name of xlsx file.
 
